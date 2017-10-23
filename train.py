@@ -62,7 +62,13 @@ def train_model(x):
     return result
 
 if __name__ == '__main__':
-    df = pandas.read_csv('data/train.txt', sep='\s+')
+    df = pandas.read_csv('data/train.txt',
+                         dtype={
+                             'x': np.float,
+                             'y': np.float,
+                             'label': np.int
+                         },
+                         sep='\s+')
     x1 = []
     x2 = []
     for _, row in df.iterrows():
