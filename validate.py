@@ -15,6 +15,8 @@ if __name__ == '__main__':
                          },
                          sep='\s+')
     df.insert(3, 'predict_label', 1)
+    df.insert(4, 'prob1', 1)
+    df.insert(5, 'prob2', 1)
 
     with open('output/label1_result.json') as fid:
         param1 = json.load(fid)
@@ -38,6 +40,8 @@ if __name__ == '__main__':
             predict_label = 1
         else:
             predict_label = 2
+        df.loc[index, 'prob1'] = prob1
+        df.loc[index, 'prob2'] = prob2
         df.loc[index, 'predict_label'] = predict_label
         if predict_label == row['label']:
             correct_num += 1
